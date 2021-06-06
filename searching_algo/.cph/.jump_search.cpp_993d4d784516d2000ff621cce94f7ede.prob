@@ -1,0 +1,1 @@
+{"name":"Local: jump_search","url":"c:\\Users\\hp\\Desktop\\cp\\algorithms\\searching_algo\\jump_search.cpp","tests":[{"id":1622985281334,"input":"5 20\n12 20 16 18 19","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\hp\\Desktop\\cp\\algorithms\\searching_algo\\jump_search.cpp","group":"local","local":true}
