@@ -1,0 +1,1 @@
+{"name":"Local: insertion_sort","url":"c:\\Users\\hp\\Desktop\\cp\\algorithms\\sorting_algo\\insertion_sort.cpp","tests":[{"id":1623075376456,"input":"10\n9 8 7 6 5 4 3 2 1 0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\hp\\Desktop\\cp\\algorithms\\sorting_algo\\insertion_sort.cpp","group":"local","local":true}
