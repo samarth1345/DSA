@@ -3,11 +3,11 @@
 using namespace std;
 int paths(int n,int m)
 {
-    if(n==1 || m==1)       /*comming to bottom row or column only one path to last element*/
+    if(n==1 || m==1)      /*base condition*/ /*comming to bottom row or column, only one path to last element*/
     {
         return 1;
     }
-    return paths(n,m-1) + paths(n-1,m);   /*we have to move from rest of matrix(n,m-1)or(n-1,m) leaving last row or column*/
+    return paths(n,m-1) + paths(n-1,m);   /*we have to move from rest of matrix i.e (n,m-1)or(n-1,m),leaving last row or column*/
 }
 int main()
 {
