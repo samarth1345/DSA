@@ -22,7 +22,7 @@ int main()
 }
 /**********************************************************************************************************/
 //Another method to solve above question
-#include<bits/stdc++.h>
+/*#include<bits/stdc++.h>
 using namespace std;
 void solve(string ip,string op,char ex)
 {
@@ -45,4 +45,4 @@ int main()
     char ex=str[0];            //this is char used to cover first case of string as spaces are allowed only inside string
     str.erase(0,1);
     solve(str,"",ex);
-}
+}*/
