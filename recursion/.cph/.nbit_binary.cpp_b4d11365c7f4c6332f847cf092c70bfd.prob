@@ -1,1 +1,0 @@
-{"name":"Local: nbit_binary","url":"c:\\Users\\hp\\Desktop\\DSA\\recursion\\nbit_binary.cpp","tests":[{"id":1626163358869,"input":"5","output":"11111 11110 11101 11100 11011 11010 11001 10111 10110 10101"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\hp\\Desktop\\DSA\\recursion\\nbit_binary.cpp","group":"local","local":true}
