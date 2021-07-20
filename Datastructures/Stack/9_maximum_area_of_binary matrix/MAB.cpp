@@ -1,8 +1,6 @@
-//max area of a histogram
-
 #include<bits/stdc++.h>
 using namespace std;
-/************************************/
+
 //function to find nearest greatest element to right
 vector<int> NSR(vector<int> v)
 {
@@ -18,9 +16,9 @@ vector<int> NSR(vector<int> v)
         {
             right.push_back(Stack.top().second);
         }
-        else if(v[i]<Stack.top().first)
+        else if(v[i]<=Stack.top().first)
         {
-            while(Stack.size()!=0 && v[i]<Stack.top().first)
+            while(Stack.size()!=0 && v[i]<=Stack.top().first)
             {
                 Stack.pop();
             }
@@ -54,9 +52,9 @@ vector<int> NSL(vector<int> v)
         {
             left.push_back(Stack.top().second);
         }
-        else if(v[i]<Stack.top().first)
+        else if(v[i]<=Stack.top().first)
         {
-            while(Stack.size()!=0 && v[i]<Stack.top().first)
+            while(Stack.size()!=0 && v[i]<=Stack.top().first)
             {
                 Stack.pop();
             }
@@ -74,7 +72,7 @@ vector<int> NSL(vector<int> v)
     return left;
 }
 /*******************************************************/
-vector<int> solve(vector<int> v)
+int MAH(vector<int> v)
 {
     vector<int> right;
     vector<int> left;
@@ -85,30 +83,13 @@ vector<int> solve(vector<int> v)
     {
         width.push_back(right[i]-left[i]-1);
     }
-    return width;
-}
-/******************************************************/
-int main()
-{
-    vector<int> v;
-    int n;
-    cin>>n;
-    for(int i=0;i<n;i++)
-    {
-        int temp;
-        cin>>temp;
-        v.push_back(temp);
-    }
-    vector<int> width;
-    width=solve(v);
     int max=(width[0]*v[0]);
-   for(int i=1;i<n;i++)
+    for(int i=1;i<v.size();i++)
     {
         if((width[i]*v[i])>max)
         {
             max=width[i]*v[i];
         }
     }
-    cout<<max;
-    return 0;
+    return max;
 }
