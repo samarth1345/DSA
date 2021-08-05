@@ -1,4 +1,4 @@
-/*INSERTION SORTING*/
+/*selection SORTING*/
 
 /* Basic way of sorting arrays*/
 #include <iostream>
