@@ -1,5 +1,3 @@
-/*This program has following methods for linked list implemented:
-push , empty , size , reverse , insertion , deletion , print , midofll*/
 #include <iostream>
 using namespace std;
 class Node
@@ -133,6 +131,7 @@ class Node
         }
         head=prev;
     }
+    /*method to find mid of ll*/
     int midofll()
     {
         int temp = size / 2;
