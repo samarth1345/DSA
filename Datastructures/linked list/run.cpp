@@ -1,14 +1,17 @@
 #include <iostream>
-#include "SinglyLinkedList.cpp"
+#include "DoublyLinkedList.cpp"
 using namespace std;
 int main()
 {
-    Node node;
-    node.push(10);
-    node.push(20);
-    node.push(30);
-    node.push(40);
-    node.print();
-    node.Reverse_iter();
-    node.print();
+    Doublyll obj;
+    obj.push(10);
+    obj.push(20);
+    obj.push(30);
+    obj.push(40);
+    obj.print();
+    obj.insertion(20,25);
+    obj.print();
+
+    obj.Reverse_iter();
+    obj.print();
 }
