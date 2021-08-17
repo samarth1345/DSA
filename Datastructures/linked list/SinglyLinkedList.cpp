@@ -146,4 +146,6 @@ class Node
     friend Node* AppendLastNToFirst(Node* head,int n,int size);
     /*program to remove duplicates from sorted linked list*/
     friend Node* EliminateDuplicates(Node* head);
+    /*program to print reverse of LL*/
+    friend void print_reverse(Node* head);
 };
