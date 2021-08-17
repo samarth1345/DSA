@@ -148,4 +148,6 @@ class Node
     friend Node* EliminateDuplicates(Node* head);
     /*program to print reverse of LL*/
     friend void print_reverse(Node* head);
+    /*program to check if ll is palindrome*/
+    friend bool palindrome(Node* head,int size);
 };
