@@ -150,4 +150,6 @@ class Node
     friend void print_reverse(Node* head);
     /*program to check if ll is palindrome*/
     friend bool palindrome(Node* head,int size);
+    //program to make all even no after odd no
+    friend Node* solve(Node* head);
 };
