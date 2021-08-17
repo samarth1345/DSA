@@ -142,5 +142,8 @@ class Node
         }
         return obj->data;
     }
+    /*program to Append last N nodes to beginning*/
     friend Node* AppendLastNToFirst(Node* head,int n,int size);
+    /*program to remove duplicates from sorted linked list*/
+    friend Node* EliminateDuplicates(Node* head);
 };
