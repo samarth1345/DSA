@@ -142,4 +142,5 @@ class Node
         }
         return obj->data;
     }
+    friend Node* AppendLastNToFirst(Node* head,int n,int size);
 };
