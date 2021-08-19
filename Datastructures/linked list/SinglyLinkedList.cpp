@@ -152,4 +152,6 @@ class Node
     friend bool palindrome(Node* head,int size);
     //program to make all even no after odd no
     friend Node* solve(Node* head);
+    //program to delete every n nodes
+    friend Node* delete_every_n(Node* head,int n,int m);
 };
