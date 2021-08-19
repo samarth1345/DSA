@@ -1,10 +1,7 @@
-//You have been given a singly linked list of integers along with two integers, 'M,' and 'N.' 
-//Traverse the linked list such that you retain the 'M' nodes, then delete the next 'N' nodes. 
-//Continue the same until the end of the linked list.
 #include <iostream>
 #include "SinglyLinkedList.cpp"
 using namespace std;
-Node *delete_every_n(Node *head, int n, int m)
+void delete_every_n(Node *head, int n, int m)
 {
     Node *temp = head;
     Node *prev = NULL;
@@ -33,7 +30,6 @@ Node *delete_every_n(Node *head, int n, int m)
             x++;
         }
     }
-    return head;
 }
 int main()
 {
@@ -47,6 +43,6 @@ int main()
     obj.push(7);
     obj.push(8);
     obj.print();
-    obj.head = delete_every_n(obj.head, 1, 2);
+    delete_every_n(obj.head, 0, 2);
     obj.print();
 }

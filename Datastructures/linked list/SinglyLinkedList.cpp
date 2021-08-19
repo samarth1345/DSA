@@ -153,5 +153,7 @@ class Node
     //program to make all even no after odd no
     friend Node* solve(Node* head);
     //program to delete every n nodes
-    friend Node* delete_every_n(Node* head,int n,int m);
+    friend void delete_every_n(Node* head,int n,int m);
+    //program to swap two nodes
+    friend Node* swap(Node* head,int i, int j);
 };
