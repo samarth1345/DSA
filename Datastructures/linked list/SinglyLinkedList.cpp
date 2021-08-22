@@ -156,4 +156,6 @@ class Node
     friend void delete_every_n(Node* head,int n,int m);
     //program to swap two nodes
     friend Node* swap(Node* head,int i, int j);
+    //program to reverse nodes k times
+    friend Node* Kreverse(Node* head,int k);
 };
