@@ -6,7 +6,7 @@ class Node
     int data;
     Node *next;
     int size;
-    public:
+    bool flag;
     Node *head;
     Node()
     {
