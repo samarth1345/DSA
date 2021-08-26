@@ -158,6 +158,8 @@ class Node
     friend Node* swap(Node* head,int i, int j);
     //program to reverse nodes k times
     friend Node* Kreverse(Node* head,int k);
+    //bubble sort on linked list
+    friend Node* bubblesort(Node* head,int size);
     //merge sort on linked list
     friend Node* mergesort(Node* head);
 };
