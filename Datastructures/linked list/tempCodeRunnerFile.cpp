@@ -1,1 +1,0 @@
-bool detectLoop(Node *head)
