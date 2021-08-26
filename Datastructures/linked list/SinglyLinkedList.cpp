@@ -162,4 +162,6 @@ class Node
     friend Node* bubblesort(Node* head,int size);
     //merge sort on linked list
     friend Node* mergesort(Node* head);
+    //floyd loop 
+    friend bool detectLoop(Node *head);
 };

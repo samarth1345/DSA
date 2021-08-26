@@ -68,13 +68,12 @@ Node *mergesort(Node *head)
 int main()
 {
     Node obj;
-    obj.push(1);
-    obj.push(1);
+    obj.push(101);
+    obj.push(10);
     obj.push(5);
+    obj.push(20);
     obj.push(3);
-    obj.push(100);
-    obj.push(10909);
-    obj.push(4);
+    obj.push(2);
     obj.head = mergesort(obj.head);
     obj.print();
 }
