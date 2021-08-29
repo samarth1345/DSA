@@ -2,15 +2,11 @@
 using namespace std;
 int main()
 {
-    int p=10;
-    int *arr;
-    arr=&p;
-    *(arr-2)=100;
-    *(arr-1)=100;
-    *(arr+1)=100;
-    arr=&p;
-    for(int i=-2;i<=1;i++)
+    int arr[6]={1,2,3,4,100,100,1};
+    int ans=0;
+    for(int i=0;i<6;i++)
     {
-        cout<<*(arr+i)<<endl;
+        ans=ans^arr[i];
     }
+    cout<<ans<<endl;
 }

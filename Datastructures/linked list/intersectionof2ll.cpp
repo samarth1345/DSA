@@ -2,6 +2,9 @@
 LinkList2 = 10->common
 common = 15->30->NULL
 Output: 15*/
+#include <iostream>
+#include "SinglyLinkedList.cpp"
+using namespace std;
 int intersectPoint(Node* head1, Node* head2)
 {
     // Your Code Here
