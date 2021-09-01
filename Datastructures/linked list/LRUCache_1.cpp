@@ -1,4 +1,5 @@
 //with singly linked list(not the most efficient one)
+//for get and put in O(1) hashing is required 
 #include <iostream>
 using namespace std;
 class LRUCache
