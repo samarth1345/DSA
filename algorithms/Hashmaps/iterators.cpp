@@ -12,6 +12,7 @@ int main()
 
     //begin function returns iterator to first pair stored in map
     //end function returns a value indicating end of map
+    
     unordered_map<string, int>::iterator it=map.begin();
     while(it != map.end())
     {
