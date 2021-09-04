@@ -1,6 +1,6 @@
 #include <string>
 #include <math.h>
-#include<iostream>
+#include <iostream>
 using namespace std;
 template <typename T>
 class map_array
@@ -49,28 +49,32 @@ public:
         current_size++;
         int index = hashcode(key);
         index = index % 20;
-        if (array[index] == NULL)
+        map_array<T> *head = array[index];
+        if (head == NULL)
         {
-            map_array<T> *newnode = new map_array<T>;
+            map_array<T> *newnode= new map_array<T>;
             newnode->key = key;
             newnode->value = value;
-            newnode->next = NULL;
             array[index] = newnode;
         }
         else
         {
-            map_array<T> *newnode = array[index];
-            if (newnode->key == key)
+            map_array<T> *prevnode = NULL;
+            while(head != NULL)
             {
-                newnode->value = value;
+                if(head->key == key)
+                {
+                    head->value=value;
+                }
+                prevnode=head;
+                head=head->next;
             }
-            else
+            if(head == NULL)
             {
-                map_array<T> *newnode_2 = new map_array<T>;
-                newnode_2->key = key;
-                newnode_2->value = value;
-                newnode_2->next = NULL;
-                newnode->next = newnode_2;
+                map_array<T> *temp = new map_array<T>;
+                temp->key=key;
+                temp->value=value;
+                prevnode->next=temp;
             }
         }
     }
@@ -79,19 +83,19 @@ public:
         int index = hashcode(key);
         index = index % 20;
         map_array<T> *newnode = array[index];
-        while(newnode != NULL)
+        while (newnode != NULL)
         {
-            if(newnode->key == key)
+            if (newnode->key == key)
             {
                 return newnode->value;
             }
-            newnode=newnode->next;
+            newnode = newnode->next;
         }
         return 0;
     }
     void delete_key(string key)
     {
-        current_size--;
+
         int index = hashcode(key);
         index = index % 20;
         map_array<T> *newnode = array[index];
@@ -103,6 +107,7 @@ public:
         }
         if (newnode != NULL)
         {
+            current_size--;
             if (prevnode == NULL)
             {
                 array[index] = newnode->next;

@@ -12,6 +12,5 @@ int main()
     cout<<map.at("cdk")<<endl;
     cout<<map.at("cdg")<<endl;
     cout<<map.at("samarth")<<endl;
-    map.delete_key("samarth");
-    cout<<map.at("samarth")<<endl;
+    
 }
