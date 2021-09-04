@@ -1,5 +1,6 @@
 #include <string>
 #include <math.h>
+#include<iostream>
 using namespace std;
 template <typename T>
 class map_array
@@ -31,6 +32,7 @@ class ourmap
         }
         return index;
     }
+
 public:
     ourmap()
     {
@@ -77,18 +79,39 @@ public:
         int index = hashcode(key);
         index = index % 20;
         map_array<T> *newnode = array[index];
-        if (newnode->key != key)
+        while(newnode != NULL)
         {
-            while (newnode != NULL)
+            if(newnode->key == key)
             {
-                if (newnode->key == key)
-                {
-                    return newnode->value;
-                }
-                newnode = newnode->next;
+                return newnode->value;
+            }
+            newnode=newnode->next;
+        }
+        return 0;
+    }
+    void delete_key(string key)
+    {
+        current_size--;
+        int index = hashcode(key);
+        index = index % 20;
+        map_array<T> *newnode = array[index];
+        map_array<T> *prevnode = NULL;
+        while (newnode->key != key && newnode != NULL)
+        {
+            prevnode = newnode;
+            newnode = newnode->next;
+        }
+        if (newnode != NULL)
+        {
+            if (prevnode == NULL)
+            {
+                array[index] = newnode->next;
+            }
+            else
+            {
+                prevnode->next = newnode->next;
             }
         }
-        return newnode->value;
     }
     int getsize()
     {
