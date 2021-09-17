@@ -1,3 +1,4 @@
+//longest subarray with zero sum
 #include <iostream>
 #include <unordered_map>
 using namespace std;
@@ -9,7 +10,7 @@ int solve(int *arr, int size)
     for (int i = 0; i < size; i++)
     {
         sum += arr[i];
-        if (map.count(sum) > 0)
+        if (map.count(sum) > 0)   
         {
             if (sum == 0)
             {

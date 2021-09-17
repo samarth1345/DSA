@@ -16,25 +16,25 @@ vector<int> sequence(int *arr, int size)
         count = 0;
         if (map[arr[i]])
         {
-            count++;
+            count++; //count for arr[i] has been included
             int j, k;
             new_head = new_tail =arr[i];
-            if (map[arr[i] - 1])
+            if (map[arr[i] - 1]) //if arr[i]-1 is present in array
             {
                 j = arr[i] - 1;
             }
-            if (map[arr[i] + 1])
+            if (map[arr[i] + 1]) //if arr[i]+1 is present in array
             {
                 k = arr[i] + 1;
             }
-            while (map[j])
+            while (map[j])       //checking for numbers less than arr[i]
             {
                 new_tail = j;
                 count++;
-                map[j] = false;
+                map[j] = false;  //if present make them false so that they are not included in some other sequence
                 j--;
             }
-            while (map[k])
+            while (map[k])        //checking for numbers more than arr[i]
             {
                 new_head = k;
                 count++;
@@ -42,7 +42,7 @@ vector<int> sequence(int *arr, int size)
                 k++;
             }
         }
-        if (count >= max)
+        if (count >= max)     //if larger sequence is found
         {
             head = new_head;
             tail = new_tail;
