@@ -6,7 +6,6 @@ vector<int> solve(vector<int> v)
     stack<pair<int,int>> Stack;         //for storing pair of values in stack: use of first and and second to access value
     for(int i=0;i<v.size();i++)
     {
-        int num=i;
         if(Stack.size()==0)
         {
             ans.push_back(-1);

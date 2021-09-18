@@ -18,7 +18,7 @@ vector<int> sortA1ByA2(vector<int> A1, int N, vector<int> A2, int M)
     for (int i = 0; i < M; i++)
     {
         //if element of A2 is present in A1 pushing it to Ans 
-        //no of times it hs occured in A1
+        //no of times ,it hs occured in A1
         if (map[A2[i]] > 0)
         {
             int size = map[A2[i]];
