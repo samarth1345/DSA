@@ -1,5 +1,7 @@
 /*selection SORTING*/
-
+/*O(n^2)=worst case
+  O(n^2)=best case
+  O(n^2)=average case*/
 /* Basic way of sorting arrays*/
 #include <iostream>
 using namespace std;

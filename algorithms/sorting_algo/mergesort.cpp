@@ -1,3 +1,6 @@
+/*O(nlog(n))=worst case
+  O(nlog(n))=best case
+  O(nlog(n))=average case*/
 #include <iostream>
 using namespace std;
 
@@ -47,7 +50,8 @@ void merge(int arr[], int p, int q, int r) {
 
 // Divide the array into two subarrays, sort them and merge them
 void mergeSort(int arr[], int l, int r) {
-  if (l < r) {
+  if (l < r) 
+  {
     // m is the point where the array is divided into two subarrays
     int m = l + (r - l) / 2;
 
@@ -56,6 +60,10 @@ void mergeSort(int arr[], int l, int r) {
 
     // Merge the sorted subarrays
     merge(arr, l, m, r);
+  }
+  else
+  {
+    return;
   }
 }
 

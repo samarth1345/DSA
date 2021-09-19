@@ -1,4 +1,7 @@
 /*BUBBLE SORT-Taking adjacent elements,swapping if required*/
+/*O(n^2)=worst case
+  O(n)=best case
+  O(n^2)=average case*/
 #include<iostream>
 using namespace std;
 /*function to swap array elemments*/
@@ -15,14 +18,20 @@ void swap(int *arr_1, int *arr_2)
 
 int sort(int arr[],int num)     /*At end of 1st loop of "i",largest element of array would be at last position*/
 {
+    bool flag=false;
     for(int i=0;i<num;i++)
     {
         for(int j=0;j<num-i;j++)
         {
             if(arr[j]>arr[j+1])          /*comparing adjacent elements and swapping if required*/
             {
-                swap(&arr[j],&arr[j+1]);
+                flag=true;
+                swap(arr[j],arr[j+1]);
             }
+        }
+        if(!flag)
+        {
+            break;
         }
     }
     for(int i=0;i<num;i++)

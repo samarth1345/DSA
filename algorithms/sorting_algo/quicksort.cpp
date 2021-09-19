@@ -1,3 +1,6 @@
+/*O(n^2)=worst case    : when array is sorted partition is done at beginning or end
+  O(nlog(n))=best case : when partition is done in mid leading to dec. in tree size
+  O(n^2)=average case*/
 #include<iostream>
 using namespace std;
 void swap(int arr[],int i,int j)
