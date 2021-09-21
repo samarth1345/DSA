@@ -1,6 +1,6 @@
 /*BUBBLE SORT-Taking adjacent elements,swapping if required*/
 /*O(n^2)=worst case
-  O(n)=best case
+  O(n)=best case : if array is already sorted
   O(n^2)=average case*/
 #include<iostream>
 using namespace std;

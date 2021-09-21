@@ -1,6 +1,6 @@
 /*insertion sort-this takes a element at a time traverse back to 0 pos. while comparing the elements and swapping*/
 /*O(n^2)=worst case
-  O(n)=best case
+  O(n)=best case : when array is sorted
   O(n^2)=average case*/
 #include<iostream>
 using namespace std;

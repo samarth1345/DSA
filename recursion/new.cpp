@@ -18,5 +18,7 @@ int solve(int m,int n)
 }
 int main()
 {
-    cout<<solve(2,0);
+    char a='a';
+    cout<<a;
+    //cout<<solve(2,0);
 }
