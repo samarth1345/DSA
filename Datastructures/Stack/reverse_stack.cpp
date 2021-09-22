@@ -1,44 +1,46 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<stack>
 using namespace std;
-void InsertAtBottom(stack<int>& Stack,int Element)
+//function to insert at bottom of stack recursively
+void InsertatBottom(stack<int>& Stack,int bottom)
 {
     if(Stack.empty())
     {
-        Stack.push(Element);
+        Stack.push(bottom);
         return;
     }
     int store=Stack.top();
     Stack.pop();
-    InsertAtBottom(Stack,Element);
+    InsertatBottom(Stack,bottom);
     Stack.push(store);
 }
-void reverse(stack<int>& Stack)
+
+void reverse_stack(stack<int>& Stack)
 {
     if(Stack.empty())
     {
         return;
     }
-    int EleAtTop=Stack.top();
+    int Bottom=Stack.top();
     Stack.pop();
-    reverse(Stack);
-    InsertAtBottom(Stack,EleAtTop);
+    reverse_stack(Stack);
+    InsertatBottom(Stack,Bottom);
 }
 int main()
 {
+    int size;
+    cin>>size;
     stack<int> Stack;
-    int n;
-    cin>>n;
-    int i=n;
-    while(i--)
+    for(int i=1;i<=size;i++)
     {
         int temp;
         cin>>temp;
         Stack.push(temp);
     }
-    reverse(Stack);
-    for(int i=0;i<n;i++)
+    reverse_stack(Stack);
+    for(int i=1;i<=size;i++)
     {
-        cout<<Stack.top()<<endl;
+        cout<<Stack.top()<<" ";
         Stack.pop();
     }
 }
