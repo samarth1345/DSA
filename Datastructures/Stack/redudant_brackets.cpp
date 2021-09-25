@@ -1,34 +1,55 @@
-#include<iostream>
-#include<stack>
+#include <iostream>
+#include <stack>
 using namespace std;
+//keep on building stack till ) comes
+//when ) comes start poping out elements
+//with conditions
 bool check_redudant(string input)
 {
-    bool flag=false;
     stack<char> Stack;
-    for(int i=0;i<input.length();i++)
+    for (int i = 0; i < input.length(); i++)
     {
-        if(input[i]=='(')
+        if (input[i] == '(' || input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/')
         {
             Stack.push(input[i]);
         }
-        else if(input[i]==')' && flag)
+        else if (input[i] == ')')
         {
-            Stack.pop();
-            flag=false;
-        }
-        else if(input[i]=='+'||input[i]=='-' )
-        {
-            if(Stack.top()=='(')
+            if (Stack.top() == '(')
             {
-                flag=true;
+                return true;
+            }
+            while (Stack.size() > 0 && Stack.top() != '(')
+            {
+                Stack.pop();
+            }
+            if (Stack.size() > 0)
+            {
+                Stack.pop();
+            }
+            else
+            {
+                return true;
             }
         }
     }
-    return !Stack.empty();
+    return false;
 }
 int main()
 {
-    string input;
-    cin>>input;
-    cout<<(bool)check_redudant(input);
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        string input;
+        cin >> input;
+        if (check_redudant(input))
+        {
+            cout << "true" << endl;
+        }
+        else
+        {
+            cout << "false" << endl;
+        }
+    }
 }
