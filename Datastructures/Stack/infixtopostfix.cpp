@@ -1,20 +1,21 @@
+//use brackets properly
 #include<bits/stdc++.h>
 using namespace std;
 string infixtopostfix(string input)
 {
     stack<char> Stack;
     string ans="";
-    for (int i = input.length()-1; i >=0; i--)
+    for (int i = 0; i <input.length(); i++)
     {
-        if (input[i]=='*'||input[i] == '/'||input[i] == '+'||input[i] == '-'||input[i]==')')
+        if (input[i]=='*'||input[i] == '/'||input[i] == '+'||input[i] == '-'||input[i]=='(')
         {
             Stack.push(input[i]);
         }
-        //if open bracket comes then 
-        //push all elements to string until closed bracket comes
-        else if(input[i]=='(')
+        //if closed bracket comes then 
+        //push all elements to string until open bracket comes
+        else if(input[i]==')')
         {
-            while(Stack.top()!=')')
+            while(Stack.top()!='(')
             {
                 ans+=Stack.top();
                 Stack.pop();
@@ -26,7 +27,6 @@ string infixtopostfix(string input)
             ans+=input[i];
         }
     }
-    reverse(ans.begin(),ans.end());
     return ans;
 }
 int main()
