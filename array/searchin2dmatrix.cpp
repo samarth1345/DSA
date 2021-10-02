@@ -1,5 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
+//logic:Just as 1d array we want to perform binary search,
+//we find mid of row , if key is found we return , else we compare key with last 
+//element of that row to check if we need to stay in this row or move to next row
+//and we carry on this operaion until we get our element
 bool searchMatrix(vector<vector<int>> &matrix, int target)
 {
     int row = 0;
@@ -13,17 +17,21 @@ bool searchMatrix(vector<vector<int>> &matrix, int target)
         {
             return true;
         }
+        //checking if target or key is greater than current element
         else if (matrix[row][mid] < target)
         {
+            //if target is greater than last element of row we move to next row
             if (target > matrix[row][end])
             {
                 row++;
             }
+            //else me move start
             else
             {
                 start=mid+1;
             }
         }
+        //if current element is greater than target we move end
         else if (matrix[row][mid] > target)
         {
             end=mid-1;
