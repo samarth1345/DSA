@@ -30,16 +30,22 @@ vector<int> printFirstNegativeInteger(int *A, int N, int K)
 }
 int main()
 {
-    int n,k;
-    cin>>n>>k;
-    int A[n];
-    for(int i=0;i<n;i++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        cin>>A[i];
-    }
-    vector<int> ans=printFirstNegativeInteger(A,n,k);
-    for(int i=0;i<ans.size();i++)
-    {
-        cout<<ans[i]<<" ";
+        int n, k;
+        cin >> n >> k;
+        int A[n];
+        for (int i = 0; i < n; i++)
+        {
+            cin >> A[i];
+        }
+        vector<int> ans = printFirstNegativeInteger(A, n, k);
+        for (int i = 0; i < ans.size(); i++)
+        {
+            cout << ans[i] << " ";
+        }
+        cout<<endl;
     }
 }
