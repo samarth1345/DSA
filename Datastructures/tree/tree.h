@@ -12,6 +12,13 @@ public:
     {
         this->data = data;
     }
+    ~tree()
+    {
+        for(int i=0;i<subnodes.size();i++)
+        {
+            delete subnodes[i];
+        }
+    }
     tree<int> *insertTree_recursive()
     {
         int data;
