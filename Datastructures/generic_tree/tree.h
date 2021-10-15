@@ -13,7 +13,7 @@ public:
     }
     ~tree()
     {
-        for(int i=0;i<subnodes.size();i++)
+        for (int i = 0; i < subnodes.size(); i++)
         {
             delete subnodes[i];
         }
@@ -94,71 +94,6 @@ public:
                 q.push(node->subnodes[i]);
             }
         }
-        cout<<endl;
-    }
-    //count no. of nodes
-    int countnodes(tree<int> *obj)
-    {
-        int count = 1;
-        for (int i = 0; i < obj->subnodes.size(); i++)
-        {
-            count += countnodes(obj->subnodes[i]);
-        }
-        return count;
-    }
-    int sumofnodes(tree<int> *obj)
-    {
-        int sum = obj->data;
-        for (int i = 0; i < obj->subnodes.size(); i++)
-        {
-            sum += sumofnodes(obj->subnodes[i]);
-        }
-        return sum;
-    }
-    int maxnode(tree<int> *obj)
-    {
-        int ans = obj->data;
-        for (int i = 0; i < obj->subnodes.size(); i++)
-        {
-            int temp = maxnode(obj->subnodes[i]);
-            ans = max(ans, temp);
-        }
-        return ans;
-    }
-    int height(tree<int> *obj)
-    {
-        int ans=1;
-        for(int i=0;i<obj->subnodes.size();i++)
-        {
-            int temp=1;
-            temp+=height(obj->subnodes[i]);
-            ans=max(ans,temp);
-        }
-        return ans;
-    }
-    void printAtdepth(tree<int> *obj,int d)
-    {
-        if(d==0)
-        {
-            cout<<obj->data<<" ";
-            return;
-        }
-        for(int i=0;i<obj->subnodes.size();i++)
-        {
-            printAtdepth(obj->subnodes[i],d-1);
-        }
-    }
-    int leafnodes(tree<int> *obj)
-    {
-        if(obj->subnodes.size()==0)
-        {
-            return 1;
-        }
-        int ans=0;
-        for(int i=0;i<obj->subnodes.size();i++)
-        {
-            ans+=leafnodes(obj->subnodes[i]);
-        }
-        return ans;
+        cout << endl;
     }
 };
