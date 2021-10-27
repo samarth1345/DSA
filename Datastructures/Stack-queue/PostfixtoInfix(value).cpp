@@ -38,7 +38,7 @@ int prefix(string String)
             Stack.pop();
             op2 = Stack.top();
             Stack.pop();
-            Stack.push(check(op1, op2, String[i]));
+            Stack.push(check(op2, op1, String[i]));
         }
     }
     return Stack.top();

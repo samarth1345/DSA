@@ -6,6 +6,7 @@ string infixtopostfix(string input)
     string ans="";
     for (int i = input.length()-1; i >=0; i--)
     {
+        //same as postfix just starting from behind and treating ")" as "("
         if (input[i]=='*'||input[i] == '/'||input[i] == '+'||input[i] == '-'||input[i]==')')
         {
             Stack.push(input[i]);
@@ -26,7 +27,7 @@ string infixtopostfix(string input)
             ans+=input[i];
         }
     }
-    reverse(ans.begin(),ans.end());
+    //reverse(ans.begin(),ans.end());
     return ans;
 }
 int main()

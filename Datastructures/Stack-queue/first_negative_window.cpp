@@ -7,7 +7,7 @@ vector<int> printFirstNegativeInteger(int *A, int N, int K)
     for (int i = 0; i < N; i++)
     {
         if (A[i] < 0)
-            q.push({A[i], i});
+        q.push({A[i], i});
     }
     int totwindow = N - K + 1;
     for (int i = 0; i < totwindow; i++)
