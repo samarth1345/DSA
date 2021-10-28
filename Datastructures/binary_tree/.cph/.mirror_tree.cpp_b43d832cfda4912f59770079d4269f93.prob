@@ -1,0 +1,1 @@
+{"name":"Local: mirror_tree","url":"c:\\Users\\hp\\Desktop\\DSA\\Datastructures\\binary_tree\\mirror_tree.cpp","tests":[{"id":1635404813742,"input":"2 2 3 4 3 4 -1 -1 -1 -1 -1 -1 -1 -1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\hp\\Desktop\\DSA\\Datastructures\\binary_tree\\mirror_tree.cpp","group":"local","local":true}

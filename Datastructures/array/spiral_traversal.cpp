@@ -1,135 +1,128 @@
-#include <iostream>
+#include <bits/stdc++.h>
+#define MAX 10
 using namespace std;
-int *spirallyTraverse(int r, int c, int **matrix)
+void rectify(pair<int,int> &ans,int row,int col)
 {
-    int size = r * c;
-    int *ans = new int[size];
-    int i = 0, j = 0;
-    int count = 0;
-    bool row_right = true;
-    bool row_left = false;
-    bool col_up = false;
-    bool col_down = false;
-    while (size > 0)
+    if(ans.first<0 || ans.first>=row)
     {
-        if (row_right)
+        if(ans.first<0) ans.first=0;
+        else ans.first=row-1;
+    }
+    else if(ans.second<0 || ans.second>=col)
+    {
+        if(ans.second<0) ans.second=0;
+        else ans.second=col-1;
+    }
+}
+pair<int, int> reversespiral(int arr[][MAX], int row, int col, int i, int j)
+{
+    pair<int, int> ans;
+    int size = row * col;
+    vector<int> visited(size);
+    int k = 0;
+    while (k < size)
+    {
+        while (j >= 0 && arr[i][j] != -1)
         {
-            ans[count] = matrix[i][j];
-            matrix[i][j] = -1;
-            j++;
-        }
-        else if (row_left)
-        {
-            ans[count] = matrix[i][j];
-            matrix[i][j] = -1;
+            visited[k] = arr[i][j];
+            arr[i][j] = -1;
+            k++;
             j--;
         }
-        else if (col_up)
+        if(k>=size) 
         {
-            ans[count] = matrix[i][j];
-            matrix[i][j] = -1;
-            i--;
+            if(arr[i][j] == -1)  j++;
+            goto time;
         }
-        else if (col_down)
+        j++;
+        i++;
+        while (i < row && arr[i][j] != -1)
         {
-            ans[count] = matrix[i][j];
-            matrix[i][j] = -1;
+            visited[k] = arr[i][j];
+            arr[i][j] = -1;
+            k++;
             i++;
         }
-        size--;
-        count++;
-        if (col_up || col_down)
+        if(k>=size) 
         {
-            if (i > r - 1 || i < 0 || matrix[i][j] == -1)
-            {
-                if (i > r - 1)
-                {
-                    i--;
-                    j--;
-                    row_left = true;
-                }
-                else if (matrix[i][j] == -1)
-                {
-                    if (col_up)
-                    {
-                        row_right = true;
-                        i++;
-                        j++;
-                    }
-                    else
-                    {
-                        i--;
-                        j--;
-                        row_left = true;
-                    }
-                }
-                else
-                {
-                    i++;
-                    j++;
-                    row_right = true;
-                }
-                col_up = false;
-                col_down = false;
-            }
+            if(arr[i][j] == -1)  i--;
+            goto time;
         }
-        else if(row_left || row_right)
+        i--;
+        j++;
+        while (j < col && arr[i][j] != -1)
         {
-            if (j > c - 1 || j < 0 || matrix[i][j] == -1)
-            {
-                if (j > c - 1)
-                {
-                    j--;
-                    i++;
-                    col_down = true;
-                }
-                else if (matrix[i][j] == -1)
-                {
-                    if (row_right)
-                    {
-                        j--;
-                        i++;
-                        col_down = true;
-                    }
-                    else
-                    {
-                        j++;
-                        i--;
-                        col_up = true;
-                    }
-                }
-                else
-                {
-                    j++;
-                    i--;
-                    col_up = true;
-                }
-                row_right = false;
-                row_left = false;
-            }
+            visited[k] = arr[i][j];
+            arr[i][j] = -1;
+            k++;
+            j++;
         }
+        if(k>=size) 
+        {
+            if(arr[i][j] == -1)  j--;
+            goto time;
+        }
+        j--;
+        i--;
+        while (i >= 0 && arr[i][j] != -1)
+        {
+            visited[k] = arr[i][j];
+            arr[i][j] = -1;
+            k++;
+            i--;
+        }
+        if(k>=size) 
+        {
+            if(arr[i][j] == -1)  i++;
+            goto time;
+        }
+        j--;
+        i++;
     }
+    time:
+    for (int i = 0; i < k; i++)
+    {
+        cout << visited[i] << " ";
+    }
+    ans.first=i; ans.second=j;
+    rectify(ans,row,col);
     return ans;
 }
 int main()
 {
-    int row, col;
-    cin >> row >> col;
-    int **matrix = new int *[col];
-    for (int i = 0; i < col; i++)
+    int matrix, row, col;
+    cin >> matrix >> row >> col;
+    int input[matrix][MAX][MAX];
+    for (int i = 0; i < matrix; i++)
     {
-        matrix[i] = new int[row];
-    }
-    for (int i = 0; i < row; i++)
-    {
-        for (int j = 0; j < col; j++)
+        for (int j = 0; j < row; j++)
         {
-            cin >> matrix[i][j];
+            for (int k = 0; k < col; k++)
+            {
+                cin >> input[i][j][k];
+            }
         }
     }
-    int *ans = spirallyTraverse(row, col, matrix);
-    for (int i = 0; i < row * col; i++)
+    int start_pos[3];
+    for (int i = 0; i < 3; i++)
     {
-        cout << ans[i] << " ";
+        cin >> start_pos[i];
+    }
+    pair<int,int> start={start_pos[1],(matrix-1-start_pos[0])};
+    for (int i = 0; i < col; i++)
+    {
+        int temp_i = 0, temp_j = 0;
+        int temp[MAX][MAX];
+        for (int j = 0; j < row; j++)
+        {
+            for (int k = matrix - 1; k >= 0; k--)
+            {
+                temp[temp_i][temp_j] = input[k][j][i];
+                temp_j++;
+            }
+            temp_j = 0;
+            temp_i++;
+        }
+        start = reversespiral(temp, row, matrix, start.first, start.second);
     }
 }
