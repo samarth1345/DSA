@@ -17,6 +17,7 @@ vector<string> binaryTreePaths(treeNode<int> *root)
     {
         return ans;
     }
+    //case for leaf nodes
     if (!root->left && !root->right)
     {
         ans.push_back(to_string(root->data));
@@ -24,8 +25,11 @@ vector<string> binaryTreePaths(treeNode<int> *root)
     }
     vector<string> left = binaryTreePaths(root->left);
     vector<string> right = binaryTreePaths(root->right);
+    //converting root's data to string 
     string toadd = to_string(root->data);
+    //adding left substring to final vector 
     makefinal(left, ans, toadd);
+    //adding right substring to final vector 
     makefinal(right, ans, toadd);
     return ans;
 }
