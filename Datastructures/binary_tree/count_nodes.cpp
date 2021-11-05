@@ -7,10 +7,7 @@ int count_nodes(treeNode<int> *root)
     {
         return 0;
     }
-    int count=1;
-    count+=count_nodes(root->left);
-    count+=count_nodes(root->right);
-    return count;
+    return 1+count_nodes(root->right)+count_nodes(root->left);
 }
 int main()
 {

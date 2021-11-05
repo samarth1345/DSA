@@ -17,6 +17,7 @@ void printzigzag(vector<vector<int>> arr)
         cout<<endl;
     }
 }
+//done using level order traversal
 void zig_zag(treeNode<int> *root)
 {
     queue<treeNode<int> *> q;

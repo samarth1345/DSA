@@ -7,10 +7,7 @@ int sumofnodes(treeNode<int> *root)
     {
         return 0;
     }
-    int sum=root->data;
-    sum+=sumofnodes(root->left);
-    sum+=sumofnodes(root->right);
-    return sum;
+    return root->data+sumofnodes(root->left)+sumofnodes(root->right);
 }
 int main()
 {

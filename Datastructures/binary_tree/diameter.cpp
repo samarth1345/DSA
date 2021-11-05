@@ -9,15 +9,8 @@ int height(treeNode<int> *root)
     {
         return 0;
     }
-    int maxi,temp;
-    //height of left node
-    maxi=height(root->left);
-
-    //height of right node
-    temp=height(root->right);
-    
     //returning maximum height of left and right
-    return max(temp,maxi)+1;
+    return max(height(root->left),height(root->right))+1;
 }
 int diameter(treeNode<int> *root)
 {

@@ -15,9 +15,12 @@ pair<int,int> height_dia(treeNode<int> *root)
     //height and diameter of right node
     rightnode=height_dia(root->right);
     
+    //calculating height for root node
     ans.first=max(leftnode.first,rightnode.first)+1;
 
-    int temp=leftnode.first+rightnode.first+1;  //diameter of root node 
+    //diameter of root node 
+    int temp=leftnode.first+rightnode.first+1; 
+    //calculating max of three diameters
     ans.second=max(temp,max(leftnode.second,rightnode.second));
 
     return ans;

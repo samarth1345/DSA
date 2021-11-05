@@ -43,7 +43,7 @@ vector<LL *> solve(treeNode<int> *root)
             }
             if(temp->head->right!=NULL)
             {
-                 LL* temp1=new LL();
+                LL* temp1=new LL();
                 temp1->head=temp->head->right;
                 temp1->data=temp->head->right->data;
                 q.push(temp1);
