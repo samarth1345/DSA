@@ -11,7 +11,7 @@ void MirrorTree(treeNode<int> *root)
     while (!q.empty())
     {
         treeNode<int> *temp = q.front();
-        cout << temp->data;
+        cout << temp->data << " ";
         if (temp->right != NULL)
         {
             q.push(temp->right);
