@@ -8,8 +8,9 @@ vector<int> slicing(vector<int> arr, int X, int Y)
     vector<int> vector(first, last);
     return vector;
 }
-treeNode<int> *construct(vector<int> inorder, vector<int> preorder, int size)
+treeNode<int> *construct(vector<int> inorder, vector<int> preorder)
 {
+    int size=inorder.size();
     if (size > 0)
     {
         int root_data = preorder[0];
@@ -22,9 +23,9 @@ treeNode<int> *construct(vector<int> inorder, vector<int> preorder, int size)
         treeNode<int> *leftnode=NULL;
         treeNode<int> *rightnode=NULL;
         if(left>0)
-        leftnode = construct(slicing(inorder, 0, left - 1), slicing(preorder, 1, left), left);
+        leftnode = construct(slicing(inorder, 0, left - 1), slicing(preorder, 1, left));
         if((size-left-1) > 0)
-        rightnode= construct(slicing(inorder, left + 1, size-1), slicing(preorder, 1 + left, size-1), size - left-1);
+        rightnode= construct(slicing(inorder, left + 1, size-1), slicing(preorder, 1 + left, size-1));
         root->left = leftnode;
         root->right = rightnode;
         return root;
@@ -48,6 +49,6 @@ int main()
         cin >> temp;
         inorder.push_back(temp);
     }
-    treeNode<int> *newnode = construct(inorder, preorder, size);
+    treeNode<int> *newnode = construct(inorder, preorder);
     newnode->printTree();
 }
