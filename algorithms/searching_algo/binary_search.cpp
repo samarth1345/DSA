@@ -1,14 +1,14 @@
-#include<iostream>
-#include<vector>
+#include<bits/stdc++.h>
 using namespace std;
 bool searching(vector<int> arr,int num,int key)
 {
+    sort(arr.begin(),arr.end());
     int start=0;
     int end=num;
     int mid;
     while(start<=end)
     {
-        mid=(start+end)/2;
+        mid=(end-(start+end)/2);
         if(key==arr[mid])
         {
             return true;
