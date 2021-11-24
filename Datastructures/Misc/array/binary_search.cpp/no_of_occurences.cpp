@@ -1,19 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-//logic:this is just a minute modification of binary search where we will just
-//change the statement when we found the element.
-//we will do 2 binary serach 1 for first index and 2 for last index.
-//in 1st when we find the element in array we will then look leftside of that
-//mid, if we have some occurence on left side that can be the first index, adnd
-//similarily for last index we will start looking in right side when we find the element 
-vector<int> searchRange(vector<int> &nums, int target)
+//logic:this is just a slight modification for first_last_occurence 
+//if we get the first last index of element 
+//we have to just subtract last from first and  add 1.
+int occurences(vector<int> &arr, int x)
 {
     vector<int> ans;
-    int start = 0, end = nums.size()-1, mid;
+    int start = 0, end = arr.size()-1, mid;
     while (start <= end)
     {
         mid = start + (end - start) / 2;
-        if (nums[mid] == target)
+        if (arr[mid] == x)
         {
             if (ans.size()==0)
                 ans.push_back(mid);
@@ -24,23 +21,21 @@ vector<int> searchRange(vector<int> &nums, int target)
             }
             end = mid - 1;
         }
-        else if (nums[mid] < target)
+        else if (arr[mid] < x)
             start = mid + 1;
         else
             end = mid - 1;
     }
     if (ans.empty())
     {
-        ans.push_back(-1);
-        ans.push_back(-1);
-        return ans;
+        return 0;
     }
     start = 0;
-    end = nums.size()-1;
+    end = arr.size()-1;
     while (start <= end)
     {
         mid = start + (end - start) / 2;
-        if (nums[mid] == target)
+        if (arr[mid] == x)
         {
             if (ans.size() == 1)
                 ans.push_back(mid);
@@ -51,12 +46,12 @@ vector<int> searchRange(vector<int> &nums, int target)
             }
             start = mid + 1;
         }
-        else if (nums[mid] < target)
+        else if (arr[mid] < x)
             start = mid + 1;
         else
             end = mid - 1;
     }
-    return ans;
+    return ans[1]-ans[0]+1;
 }
 int main()
 {
@@ -69,8 +64,5 @@ int main()
         cin>>temp;
         arr.push_back(temp);
     }
-    vector<int> ans;
-    ans = searchRange(arr, x);
-    cout << ans[0] << endl
-         << ans[1];
+    cout << occurences(arr, x) << endl;
 }
