@@ -15,12 +15,17 @@ string solve(string A)
     for (int i = 1; i < A.length(); i++)
     {
         map[A[i]]++;
+        //if char has not repeated till now,we store it in queue
         if (map[A[i]] <= 1)
             queue.push(A[i]);
+        //if there is no char which is nin repeating
         if (queue.size() == 0)
             ans += '#';
+        //if current char is not equal to first non repeating char we add first non repeating char
         else if (A[i] != queue.front())
             ans += queue.front();
+        //if current char is equal to first non repeating char
+        //we have find in queue for non repeating char
         else
         {
             while (map[queue.front()] >= 2 && queue.size())
