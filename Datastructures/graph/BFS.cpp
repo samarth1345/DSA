@@ -2,7 +2,7 @@
 using namespace std;
 #include "graph_list.h"
 using namespace std;
-void DFS(vector<int> *List, int vertices)
+void BFS(vector<int> *List, int vertices)
 {
     vector<int> visited(vertices+1);
     queue<int > q;
@@ -42,5 +42,5 @@ int main()
         obj->input(u, v);
     }
     vector<int> *List = obj->getList();
-    DFS(List, n);
+    BFS(List, n);
 }
