@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-using namespace std;
 #include "graph_list.h"
 using namespace std;
 void BFS(vector<int> *List, int vertices)
