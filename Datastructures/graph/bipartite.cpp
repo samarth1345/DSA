@@ -6,7 +6,7 @@ using namespace std;
 //so we just traverse and mark colours and if there is a cycle then 
 //paths will be crossed,on contradiction of colours it would be having cycle with 
 //odd no. of nodes.
-vector<int> bipartite(vector<int> *List, int vertices)
+vector<int> bipartite(vector<int> *graph, int vertices)
 {
     vector<int> colour(vertices + 1, -1);
     queue<pair<int, int>> q;
@@ -20,14 +20,14 @@ vector<int> bipartite(vector<int> *List, int vertices)
             {
                 int temp = q.front().first,prev=q.front().second;
                 q.pop();
-                for (int i = 0; i < List[temp].size(); i++)
+                for (int i = 0; i < graph[temp].size(); i++)
                 {
-                    if (colour[List[temp][i]]==-1)
+                    if (colour[graph[temp][i]]==-1)
                     {
-                        colour[List[temp][i]]=(!prev);
-                        q.push({List[temp][i],!prev});
+                        colour[graph[temp][i]]=(!prev);
+                        q.push({graph[temp][i],!prev});
                     }
-                    else if(colour[List[temp][i]]==prev)
+                    else if(colour[graph[temp][i]]==prev)
                     {
                         cout<<"graph is not bipartite\n";
                         return {};
@@ -50,8 +50,8 @@ int main()
         cin >> u >> v;
         obj->input(u, v);
     }
-    vector<int> *List=obj->getList();
-    vector<int> ans=bipartite(List,n);
+    vector<int> *graph=obj->getList();
+    vector<int> ans=bipartite(graph,n);
     for(int i=1;i<ans.size();i++)
     {
         cout<<ans[i]<<" ";

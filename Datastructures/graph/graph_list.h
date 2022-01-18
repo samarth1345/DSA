@@ -15,6 +15,10 @@ public:
         List[vertice1].push_back(vertice2);
         List[vertice2].push_back(vertice1);
     }
+    void input_directed(int vertice1, int vertice2)
+    {
+        List[vertice1].push_back(vertice2);
+    }
     void print()
     {
         for(int i=1;i<=no_of_vertices;i++)
