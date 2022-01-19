@@ -6,7 +6,6 @@ using namespace std;
 vector<int> shortest_path(vector<int> *List, int vertices, int source)
 {
     vector<int> shortest(vertices, INT_MAX);
-    vector<int> visited(vertices);
     queue<int> q;
     q.push(source);
     shortest[source] = 0;
@@ -14,13 +13,11 @@ vector<int> shortest_path(vector<int> *List, int vertices, int source)
     {
         int temp = q.front();
         q.pop();
-        if (!visited[temp])
+        for (int i = 0; i < List[temp].size(); i++)
         {
-            visited[temp] = 1;
-            for (int i = 0; i < List[temp].size(); i++)
+            if (shortest[List[temp][i]] > shortest[temp] + 1)
             {
-                if (shortest[List[temp][i]] > shortest[temp] + 1)
-                    shortest[List[temp][i]] = shortest[temp] + 1;
+                shortest[List[temp][i]] = shortest[temp] + 1;
                 q.push(List[temp][i]);
             }
         }
