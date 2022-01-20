@@ -25,7 +25,7 @@ public:
         {
             cout<<i<<": ";
             for(int j=0;j<List[i].size();j++)
-                cout<<"<"<<List[i][j].first<<" "<<List[i][j].first<<">";
+                cout<<"<"<<List[i][j].first<<" "<<List[i][j].second<<">";
             cout<<endl;
         }
     }

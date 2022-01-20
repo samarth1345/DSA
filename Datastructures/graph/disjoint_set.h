@@ -38,7 +38,7 @@ public:
         else
         {
             rank[parent2]++;
-            parent[parent1]=parent1;
+            parent[parent1]=parent2;
         }
     }
     vector<int> GetParentList()
