@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+//could have been done iteratively by calculating 1's and their boundaries in less time
+//and space
 void spread(vector<vector<int>> &grid, vector<vector<int>> &visited, int x, int y, int &peri)
 {
     if (grid[x][y] == 0 || visited[x][y] == 1)
