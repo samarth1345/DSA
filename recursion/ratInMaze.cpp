@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<string>
 using namespace std;
 bool check(int row, int col, vector<vector<char>> &board, int val)
 {
