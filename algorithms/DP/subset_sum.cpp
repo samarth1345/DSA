@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
-#include <queue>
-#include <stack>
+#include<bits/stdc++.h>
 using namespace std;
 // memoization approach
 int dp[101][10001];
