@@ -26,5 +26,11 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> arr[i];
     memset(dp, -1, sizeof(dp));
-    cout << solve(arr, 1, n - 1);
+    cout << solve(arr, 1, n - 1) << endl;
+    for (int i = 1; i < arr.size(); i++)
+    {
+        for (int j = 1; j < arr.size(); j++)
+            cout << dp[i][j] << " ";
+        cout << endl;
+    }
 }
