@@ -1,11 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
-#include <queue>
-#include <stack>
-#include <cstring>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 unordered_map<string, int> map;
 bool isScramble(string s1, string s2)
