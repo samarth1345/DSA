@@ -25,6 +25,10 @@ int solve(string &s, int start, int end)
     int mn = INT_MAX;
     for (int i = start; i <= end; i++)
     {
+        //important to understand: if the place at which we are partioning is 
+        //not palindrome itself,we are not gonna partition there we will partition
+        //only when first half is palindrome and if it is not it has been taken care 
+        //by dividing into smaller partition before reaching at this point.
         if (isPalindrome(s, start, i))
             mn = min(mn, solve(s, i + 1, end) + 1);
     }

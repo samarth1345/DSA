@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int dp[1001][1001];
-//bottom up approach
+//top down approach
 int help(string &text1, string &text2, int len1, int len2)
 {
     if (len1 == -1 || len2 == -1)
@@ -21,7 +21,7 @@ int longestCommonSubsequence(string text1, string text2)
     memset(dp, -1, sizeof(dp));
     return help(text1, text2, text1.length() - 1, text2.length() - 1);
 }
-//top down approach
+//botoom up approach
 int longestCommonSubsequence(string text1, string text2)
 {
     int dp[1001][1001];
