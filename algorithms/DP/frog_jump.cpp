@@ -7,6 +7,7 @@ int dp[2001][2001];
         bool ans=false;
         for(int i=prev-1;i<=prev+1;i++){
             int t=j+1;
+            //this can be further optimised by using binary search instead of linear search
             while(t<=n && (stones[t]<=stones[j]+i)){
                 if(stones[t]==(stones[j]+i))
                 {
