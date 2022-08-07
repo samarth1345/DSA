@@ -28,3 +28,7 @@ int coinChange(vector<int> &coins, int amount)
     int ans = solve(coins, amount, coins.size());
     return ans > INT_MAX - 10000 ? -1 : ans;
 }
+int main(){
+    vector<int> coins={6,7,9};
+    cout<<coinChange(coins,23);
+}
