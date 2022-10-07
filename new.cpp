@@ -1,49 +1,41 @@
+//{ Driver Code Starts
 #include <bits/stdc++.h>
-#define endl "\n"
-#define int long long int
 using namespace std;
-int dp[100001];
-int help(vector<int> temp, int i)
-{
-    if (i == temp.size() - 1)
-        return 1;
-    if (dp[i] != -1)
-        return dp[i];
-    int ans = 0;
-    for (int j = i + 1; j < temp.size(); j++)
-    {
-        if (temp[j] % temp[i] == 0)
-            ans += help(temp, j);
-    }
-    return dp[i] = ans;
-}
-void solve()
-{
-    int n;
-    cin >> n;
-    vector<int> temp;
-    for (int i = 1; i <= sqrt(n); i++)
-    {
 
-        if (n % i == 0)
-        {
-            temp.push_back(i);
-            if ((n / i) != i)
-                temp.push_back(n / i);
-        }
+// } Driver Code Ends
+class Solution
+{
+public:
+    int dp[1001][1001];
+    int mx = 0;
+    int help(string s1, string s2, int n, int m, int count)
+    {
+        if (n == 0 || m == 0)
+            return 0;
+        if (s1[n - 1] == s2[m - 1])
+            return help(s1, s2, n - 1, m - 1, count + 1);
+        return max({count, help(s1, s2, n - 1, m, 0), help(s1, s2, n, m - 1, 0)});
     }
-    sort(temp.begin(), temp.end());
-    // for (auto i : temp)
-    //     cout << i << endl;
-    memset(dp, -1, sizeof(dp));
-    cout << help(temp, 0) << " " << endl;
-}
-int32_t main()
+    int longestCommonSubstr(string s1, string s2, int n, int m)
+    {
+        return help(s1, s2, n, m, 0);
+    }
+};
+
+//{ Driver Code Starts.
+
+int main()
 {
     int t;
     cin >> t;
     while (t--)
     {
-        solve();
+        int n, m;
+        cin >> n >> m;
+        string s1, s2;
+        cin >> s1 >> s2;
+        Solution ob;
+
+        cout << ob.longestCommonSubstr(s1, s2, n, m) << endl;
     }
 }

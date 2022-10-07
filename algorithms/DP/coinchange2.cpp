@@ -7,9 +7,9 @@ int solve(vector<int> &coins, int amount, int n)
         return 0;
     if (n < 1)
         return INT_MAX - 1;
-    //this is a special case in which we have to handle when n==1
-    //considering coins to be sorted coins[0] to be smallest,if it cannot divide
-    //amount it cannot add upto amount with any number of coins.
+    // this is a special case in which we have to handle when n==1
+    // considering coins to be sorted coins[0] to be smallest,if it cannot divide
+    // amount it cannot add upto amount with any number of coins.
     if (n == 1)
     {
         if (amount % coins[0] == 0)
@@ -28,7 +28,8 @@ int coinChange(vector<int> &coins, int amount)
     int ans = solve(coins, amount, coins.size());
     return ans > INT_MAX - 10000 ? -1 : ans;
 }
-int main(){
-    vector<int> coins={6,7,9};
-    cout<<coinChange(coins,23);
+int main()
+{
+    vector<int> coins = {6, 7, 9};
+    cout << coinChange(coins, 23);
 }
