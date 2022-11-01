@@ -1,8 +1,6 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
-vector<int> get_lps(string s, string pat)
-{
+vector<int> get_lps(string s, string pat){
     vector<int> lps(pat.length());
     int prev_lps = 0, i = 1;
     // prev_lps is actually the index which is helping us match the prefixe's
