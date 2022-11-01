@@ -1,0 +1,1 @@
+{"name":"Local: grahams_scan","url":"c:\\Users\\hp\\Desktop\\DSA\\algorithms\\convex hull\\grahams_scan.cpp","tests":[{"id":1667297628054,"input":"6\n0 0\n0 4\n-4 0\n5 0\n0 -6\n1 0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\hp\\Desktop\\DSA\\algorithms\\convex hull\\grahams_scan.cpp","group":"local","local":true}
