@@ -19,6 +19,10 @@ void floyd_warshall(vector<vector<int>> &matrix)
         {
             for (int j = 0; j < n; j++)
             {
+                if(i==j && matrix[i][j]<0){
+                    //this is the case of negative cycle
+                    //as path from 0->0 cannot be negative it has to be zero
+                }
                 if (matrix[i][via] != INT_MAX && matrix[via][j] != INT_MAX)
                     matrix[i][j] = min(matrix[i][via] + matrix[via][j], matrix[i][j]);
             }
