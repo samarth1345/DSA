@@ -10,11 +10,11 @@ vector<int> solve(vector<int> v)
         {
             ans.push_back(-1);
         }
-        else if(v[i]<Stack.top())
+        else if(v[i]<=Stack.top())
         {
             ans.push_back(Stack.top());
         }
-        else if(v[i]>Stack.top())
+        else
         {
             while(Stack.size()!=0 && v[i]>Stack.top())
             {
@@ -31,24 +31,6 @@ vector<int> solve(vector<int> v)
         }
         Stack.push(v[i]);
     }
+    reverse(ans.begin(),ans.end());
     return ans;
-}
-int main()
-{
-    vector<int> v;
-    int n;
-    cin>>n;
-    for(int i=0;i<n;i++)
-    {
-        int temp;
-        cin>>temp;
-        v.push_back(temp);
-    }
-    vector<int> ans;
-    ans=solve(v);
-    for(int i=0;i<n;i++)
-    {
-        cout<<ans[i]<<" ";
-    }
-    return 0;
 }
