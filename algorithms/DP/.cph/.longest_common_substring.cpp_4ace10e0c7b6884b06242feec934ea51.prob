@@ -1,1 +1,0 @@
-{"name":"Local: longest_common_substring","url":"c:\\Users\\hp\\Desktop\\DSA\\algorithms\\DP\\longest_common_substring.cpp","tests":[{"id":1659967284533,"input":"5 5\nababa\nababa","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\hp\\Desktop\\DSA\\algorithms\\DP\\longest_common_substring.cpp","group":"local","local":true}

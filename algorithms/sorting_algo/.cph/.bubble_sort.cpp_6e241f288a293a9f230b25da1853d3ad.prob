@@ -1,1 +1,0 @@
-{"name":"Local: bubble_sort","url":"c:\\Users\\hp\\Desktop\\DSA\\algorithms\\sorting_algo\\bubble_sort.cpp","tests":[{"id":1629432954881,"input":"7\n22 7 9 31 19 5 13","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\hp\\Desktop\\DSA\\algorithms\\sorting_algo\\bubble_sort.cpp","group":"local","local":true}
