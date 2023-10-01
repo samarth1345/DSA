@@ -1,63 +1,57 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-vector<int> get_lps(string s, string pat){
-    vector<int> lps(pat.length());
-    int prev_lps = 0, i = 1;
-    // prev_lps is actually the index which is helping us match the prefixe's
-    // of the string.
-    while (i < pat.length())
-    {
-        if (s[i] == s[prev_lps])
-        {
-            lps[i] = prev_lps + 1;
-            prev_lps++;
-            i++;
-        }
-        else if (prev_lps == 0)
-        {
-            lps[i] = 0;
-            i++;
-        }
-        else
-        {
-            // this is telling that if we can not have prev_lps+1 here can we
-            // have prev_lps-1 value here
-            prev_lps = lps[prev_lps - 1];
-        }
+
+//Time complexity: O(N) Amortized
+//Space complexity: O(N)
+//lps[i]->longest prefix which is also a suffix till i
+//note: this is 1-based indexed
+vector<int> getPi(string& s){
+    int n=s.length();
+    vector<int> lps(n+1);
+    int i=0,j=-1;
+    lps[0]=-1;
+    while(i<n){
+        while(j!=-1 && s[i]!=s[j])
+            j=lps[j];
+        i++;j++;
+        lps[i]=j;
     }
     return lps;
 }
-void kmp(string s, string pat)
-{
-    vector<int> lps = get_lps(s, pat);
-    int i = 0, j = 0;
-    while (i < s.length())
-    {
-        if (s[i] == pat[j])
-        {
-            i++;
-            j++;
-        }
-        else if (j == 0)
-        {
-            i++;
-        }
-        else
-        {
-            j = lps[j - 1];
-        }
-        if (j == pat.length())
-        {
-            cout << i - j << endl;
-            j--;
-        }
+
+/*--------------------------------------------------------------------------------------*/
+
+//APPLICATIONS
+//1.
+int FindOccurence(string s,string t){
+    //s->pattern
+    //t->text
+    string temp=s+"#"+t;
+    vector<int> lps=getPi(temp);
+    int count=0;
+    for(int i=s.length()+2;i<=temp.length();i++){
+        count+=(lps[i]==s.length());
     }
+    return count;
 }
-int main()
-{
+//2.
+int FindSmallesPeriod(string s){
+    vector<int> lps=getPi(s);
+    int prob_ans=lps.back();
+    int n=s.length();
+    int period=n-prob_ans;
+    if(n%period == 0)
+        return period;
+    return n;
+}
+//3.
+//can Also find longest prefix which is suffix by doing kmp on rev(s)+"#"+s
+
+int main(){
     string s;
-    cin >> s;
-    string pat;
-    cin >> pat;
-    kmp(s, pat);
+    cin>>s;
+    vector<int> lps=getPi(s);
+    for(int i:lps)
+        cout<<i<<" ";
+    cout<<endl;
 }

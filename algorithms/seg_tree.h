@@ -96,3 +96,169 @@ struct seg_tree{
         return min(query(2*node+1,l,mid,start,end),query(2*node+2,mid+1,r,start,end));
     }
 };
+//seg tree for sum
+struct seg_tree{
+    vector<int> st;
+    seg_tree(int n){
+        st.resize(4*n);
+    }
+    void update(int node,int l,int r,int idx){
+        if(l==idx && r==idx){
+            st[node]=1;
+            return;
+        }
+        if(idx>r || idx<l)
+            return;
+        int mid=(l+r)>>1;
+        update(2*node+1,l,mid,idx);
+        update(2*node+2,mid+1,r,idx);
+        st[node]=st[2*node+1]+st[2*node+2];
+    }
+    int query(int node,int l,int r,int start,int end){
+        if(l>=start && r<=end){
+            return st[node];
+        }
+        if(start>r || end<l)
+            return 0;
+        int mid=(l+r)>>1;
+        return query(2*node+1,l,mid,start,end)+query(2*node+2,mid+1,r,start,end);
+    }
+};
+
+//seg tree for binary string operations begin toggle on range, find max cons one on range
+struct node{
+    int max_cons_one,max_cons_zero;
+    int left_one,left_zero;
+    int right_one,right_zero;
+    node(){
+        max_cons_zero=0; max_cons_one=0;
+        left_zero=0; left_one=0;
+        right_zero=0; right_one=0;
+    }  
+};
+struct seg_tree{
+    vector<node> st;
+    vector<int> lazy;
+    seg_tree(int n){
+        st.resize(4*n);
+        lazy.resize(4*n);
+    }
+    void build(int node,int l,int r,string &s){
+        if(l==r){
+            st[node].max_cons_one=(s[l]=='1');
+            st[node].max_cons_zero=(s[l]=='0');
+            st[node].left_one=(s[l]=='1');
+            st[node].left_zero=(s[l]=='0');
+            st[node].right_one=(s[l]=='1');
+            st[node].right_zero=(s[l]=='0');
+            return;
+        }
+        int mid=l+(r-l)/2;
+        build(2*node+1,l,mid,s);
+        build(2*node+2,mid+1,r,s);
+        st[node].max_cons_one=max({st[2*node+1].max_cons_one,st[2*node+2].max_cons_one,st[2*node+1].right_one+st[2*node+2].left_one});
+        st[node].max_cons_zero=max({st[2*node+1].max_cons_zero,st[2*node+2].max_cons_zero,st[2*node+1].right_zero+st[2*node+2].left_zero});
+        st[node].left_one=st[2*node+1].left_one;
+        if(st[2*node+1].left_one==(mid-l+1)){
+            st[node].left_one+=st[2*node+2].left_one;
+        }
+        st[node].left_zero=st[2*node+1].left_zero;
+        if(st[2*node+1].left_zero==(mid-l+1)){
+            st[node].left_zero+=st[2*node+2].left_zero;
+        }
+        st[node].right_one=st[2*node+2].right_one;
+        if(st[2*node+2].right_one==(r-(mid+1)+1)){
+            st[node].right_one+=st[2*node+1].right_one;
+        }
+        st[node].right_zero=st[2*node+2].right_zero;
+        if(st[2*node+2].right_zero==(r-(mid+1)+1)){
+            st[node].right_zero+=st[2*node+1].right_zero;
+        }
+        // cout<<l<<" "<<r<<" "<<st[node].max_cons_one<<" "<<st[node].max_cons_zero<<" "<<st[node].left_one<<" "<<st[node].left_zero<<" "<<st[node].right_one<<" "<<st[node].right_zero<<endl;
+    }
+    void flip(int node,int l,int r){
+        swap(st[node].max_cons_one,st[node].max_cons_zero);
+        swap(st[node].left_one,st[node].left_zero);
+        swap(st[node].right_one,st[node].right_zero);
+    }
+    void update(int node,int l,int r,int start,int end){
+        if(lazy[node]!=0){
+            flip(node,l,r);
+            lazy[node]=0;
+            if(l!=r){
+                lazy[2*node+1]^=1;
+                lazy[2*node+2]^=1;
+            }
+        }
+        if(l>=start && r<=end){
+            flip(node,l,r);
+            if(l!=r){
+                lazy[2*node+1]^=1;
+                lazy[2*node+2]^=1;
+            }
+            return;
+        }
+        if(l>end || r<start)
+            return;
+        int mid=l+(r-l)/2;
+        update(2*node+1,l,mid,start,end);
+        update(2*node+2,mid+1,r,start,end);
+        st[node].max_cons_one=max({st[2*node+1].max_cons_one,st[2*node+2].max_cons_one,st[2*node+1].right_one+st[2*node+2].left_one});
+        st[node].max_cons_zero=max({st[2*node+1].max_cons_zero,st[2*node+2].max_cons_zero,st[2*node+1].right_zero+st[2*node+2].left_zero});
+        st[node].left_one=st[2*node+1].left_one;
+        if(st[2*node+1].left_one==(mid-l+1)){
+            st[node].left_one+=st[2*node+2].left_one;
+        }
+        st[node].left_zero=st[2*node+1].left_zero;
+        if(st[2*node+1].left_zero==(mid-l+1)){
+            st[node].left_zero+=st[2*node+2].left_zero;
+        }
+        st[node].right_one=st[2*node+2].right_one;
+        if(st[2*node+2].right_one==(r-(mid+1)+1)){
+            st[node].right_one+=st[2*node+1].right_one;
+        }
+        st[node].right_zero=st[2*node+2].right_zero;
+        if(st[2*node+2].right_zero==(r-(mid+1)+1)){
+            st[node].right_zero+=st[2*node+1].right_zero;
+        }
+    }
+    pair<node,int> query(int Node,int l,int r,int start,int end){
+        if(lazy[Node]!=0){
+            flip(Node,l,r);
+            if(l!=r){
+                lazy[2*Node+1]^=1;
+                lazy[2*Node+2]^=1;
+            }
+            lazy[Node]=0;
+        }
+        if(l>=start && r<=end){
+            return {st[Node],r-l+1};
+        }
+        if(l>end || r<start)
+            return {node(),0};
+        int mid=l+(r-l)/2;
+        auto left1=query(2*Node+1,l,mid,start,end);
+        auto right1=query(2*Node+2,mid+1,r,start,end);
+        node left=left1.first,right=right1.first;
+        node ans;
+        ans.max_cons_one=max({left.max_cons_one,right.max_cons_one,left.right_one+right.left_one});
+        ans.max_cons_zero=max({left.max_cons_zero,right.max_cons_zero,left.right_zero+right.left_zero});
+        ans.left_one=left.left_one;
+        if(left.left_one==left1.second){
+            ans.left_one+=right.left_one;
+        }
+        ans.left_zero=left.left_zero;
+        if(left.left_zero==left1.second){
+            ans.left_zero+=right.left_zero;
+        }
+        ans.right_one=right.right_one;
+        if(right.right_one==right1.second){
+            ans.right_one+=left.right_one;
+        }
+        ans.right_zero=right.right_zero;
+        if(right.right_zero==right1.second){
+            ans.right_zero+=left.right_zero;
+        }
+        return {ans,left1.second+right1.second};
+    }
+};

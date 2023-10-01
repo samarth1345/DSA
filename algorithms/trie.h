@@ -22,7 +22,7 @@ class Node{
 };
 class Trie {
 public:
-Node*root;
+    Node*root;
     Trie() {
         root=new Node();
     }

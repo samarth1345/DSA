@@ -1,41 +1,48 @@
-string manachers(string s){
-    string temp=s;
-    string new_s="#";
-    for(char i:s){
-        new_s+=i;
-        new_s+='#';
+#include<bits/stdc++.h>
+using namespace std;
+//Note: use 0-based indexing
+struct manacher
+{
+    vector<int> p;
+    void build(string s)
+    {
+        string t = "";
+        for (auto i : s)
+        {
+            t += string("#") + i;
+        }
+        run_manacher(t + "#");
     }
-    s=new_s;
-    int center=0,left=0,right=0,idx=0;
-    vector<int> d(s.length());
-    while(idx < s.length()){
-        //mirroring
-        if(idx < right && (idx+d[2*center-idx] < right)){
-            d[idx]=d[2*center-idx];
-            idx++;
-            continue;
-        }
-        int i=1;
-        //expanding
-        for(;i<s.length();i++){
-            if(idx-i<0 || idx+i>=s.length() || s[idx-i]!=s[idx+i])
-                break;
-        }
-        d[idx]=i-1;
-        //changing center
-        if(idx+right > center+right){
-            center=idx;
-            left=idx-i+1;
-            right=idx+i-1;
-        }
-        idx++;
-    }
-    int mx_i=0,mx=0;
-    for(int i=0;i<d.size();i++){
-        if(mx<d[i]){
-            mx=d[i];
-            mx_i=i;
+    void run_manacher(string s)
+    {
+        int n = s.length();
+        p.resize(n, 1);
+        int l = 1, r = 1;
+        for (int i = 1; i < n; i++)
+        {
+            p[i] = max(0, min(r - i, (l + r - i >= 0) ? p[l + r - i] : 0));
+            while (i + p[i] < n && i - p[i] >= 0 && s[i + p[i]] == s[i - p[i]])
+                p[i]++;
+            if (i + p[i] > r)
+            {
+                l = i - p[i];
+                r = i + p[i];
+            }
         }
     }
-    return temp.substr((mx_i/2)-(mx/2),mx);
-}
+    int get_longest(int center, bool odd)
+    {
+        int pos = 2 * center + 1 + !odd;
+        return p[pos] - 1;
+    }
+    bool check(int left, int right)
+    {
+        bool isOdd = (left % 2 == right % 2);
+        int len = get_longest((left + right) / 2, isOdd);
+        if (len >= (right - left + 1))
+        {
+            return true;
+        }
+        return false;
+    }
+};

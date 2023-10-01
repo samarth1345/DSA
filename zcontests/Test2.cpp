@@ -70,7 +70,12 @@ int min(int a,int b){
 }
 /*-------------------------------------------------------------------------------------*/
 void solve(){
-
+    int n=2048;
+    for(int i=1;i<=n;i+=50){
+        for(int j=i;j<=n;j+=90){
+            cout<<n<<" "<<i<<" "<<j<<endl;
+        }
+    }
 }
 int32_t main(){
     #ifndef ONLINE_JUDGE

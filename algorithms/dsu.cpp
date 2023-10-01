@@ -1,43 +1,26 @@
-class disjoint_set
-{
-    int no_of_vertices;
-    vector<int> parent, size;
-
-public:
-    disjoint_set(int n)
-    {
-        no_of_vertices = n;
-        for (int i = 0; i <= n; i++)
-        {
-            parent.push_back(i);
-            size.push_back(1);
+#include<bits/stdc++.h>
+using namespace std;
+struct disjoint_set{
+    vector<int> parent,size;
+    disjoint_set(int n){
+        for(int i=0;i<n;i++) parent.push_back(i),size.push_back(1);
+    }  
+    void Union(int a,int b){
+        int p1=find_parent(a);
+        int p2=find_parent(b);
+        if(p1==p2)
+            return;
+        if(size[p1]>size[p2]){
+            size[p1]+=size[p2];
+            parent[p2]=p1;
+        }else{
+            size[p2]+=size[p1];
+            parent[p1]=p2;
         }
     }
-    int find_parent(int node)
-    {
-        int temp = node;
-        while (parent[temp] != temp)
-        {
-            temp = parent[temp];
-        }
-        if (parent[node] != temp)
-            parent[node] = temp;
-        return temp;
-    }
-    void Union(int node1, int node2)
-    {
-        int parent1, parent2;
-        parent1 = find_parent(node1);
-        parent2 = find_parent(node2);
-        if (size[parent1] >= size[parent2])
-        {
-            size[parent1]++;
-            parent[parent2] = parent1;
-        }
-        else
-        {
-            size[parent2]++;
-            parent[parent1] = parent2;
-        }
+    int find_parent(int a){
+        if(a==parent[a])
+            return a;
+        return parent[a]=find_parent(parent[a]);
     }
 };
