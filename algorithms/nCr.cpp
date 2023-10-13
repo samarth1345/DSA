@@ -1,4 +1,6 @@
 #define ll long long int
+//this is factorial method
+//can be used when n<=1e7
 vector<ll> fact,inv_fact;
 const ll Mod=1e9+7;
 ll ModPow(ll a, ll b)
@@ -38,3 +40,12 @@ void precalc(ll N)
         inv_fact[i] =(inv_fact[i + 1]*(i + 1))%Mod;
     }
 }
+
+/******************************************************************/
+//we have a pascal table method too,this is O(n^2) method so can be
+//used when n<=1e3
+
+/*****************************************************************/
+//we also have a multiplication method,this is used when n is very big
+//but r<=1e6
+//formula for nCr = for(int i=0;i<r;i++){ ans*=((n-i)/(i+1)) }
